@@ -13,7 +13,7 @@ public class TDChessShouldPlayForBlack {
 	public void test() {
 		givenWeStartedNewGame();
 		thenWeShallSeeBoard();
-		//andTDCHessHasArrangedBlackFiguresAlongTopEdgeOfTheBoard();
+		andTDCHessAsksForHumanMove();
 	}
 
 	Game game = new Game();
@@ -49,6 +49,10 @@ public class TDChessShouldPlayForBlack {
 		String visibleBoard = COUT.getLastLines(8*2+1);
 		
 		assertEquals(expectedBoard.toString().trim(), visibleBoard);
+	}
+	
+	private void andTDCHessAsksForHumanMove() {
+		assertEquals("Human move (in form d2-d3):", COUT.getLastLine());
 	}
 
 }
