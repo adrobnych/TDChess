@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import com.tdl.console.COUT;
 import com.tdl.core.Game;
 
 public class TDChessShouldPlayForBlack {
@@ -11,7 +12,7 @@ public class TDChessShouldPlayForBlack {
 	@Test
 	public void test() {
 		givenWeStartedNewGame();
-		//thenWeShallSeeBoard();
+		thenWeShallSeeBoard();
 		//andTDCHessHasArrangedBlackFiguresAlongTopEdgeOfTheBoard();
 	}
 
@@ -21,6 +22,33 @@ public class TDChessShouldPlayForBlack {
 		game.start();
 	}
 	
-	
+	private void thenWeShallSeeBoard() {
+		String[] boardPattern = {		
+				"+---------black---------+",
+				"|RK|KN|BS|QN|KG|BS|KN|RK|",
+				"|--+--+--+--+--+--+--+--|",
+				"|PW|PW|PW|PW|PW|PW|PW|PW|",
+				"|--+--+--+--+--+--+--+--|",
+				"|  |  |  |  |  |  |  |  |",
+				"|--+--+--+--+--+--+--+--|",
+				"|  |  |  |  |  |  |  |  |",
+				"|--+--+--+--+--+--+--+--|",
+				"|  |  |  |  |  |  |  |  |",
+				"|--+--+--+--+--+--+--+--|",
+				"|  |  |  |  |  |  |  |  |",
+				"|--+--+--+--+--+--+--+--|",
+				"|pw|pw|pw|pw|pw|pw|pw|pw|",
+				"|--+--+--+--+--+--+--+--|",
+				"|rk|kn|bs|qn|kg|bs|kn|rk|",
+				"+---------white---------+"};
+		
+		StringBuilder expectedBoard = new StringBuilder();
+		for(String line : boardPattern) 
+			expectedBoard.append(line);
+		
+		String visibleBoard = COUT.getLastLines(8*2+1);
+		
+		assertEquals(expectedBoard, visibleBoard);
+	}
 
 }
