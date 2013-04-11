@@ -26,35 +26,36 @@ public class TDChessShouldPlayForBlack {
 	
 	private void thenWeShallSeeBoard() {
 		String[] boardPattern = {		
-				"+---------black---------+",
-				"|RK|KN|BS|QN|KG|BS|KN|RK|",
-				"|--+--+--+--+--+--+--+--|",
-				"|PW|PW|PW|PW|PW|PW|PW|PW|",
-				"|--+--+--+--+--+--+--+--|",
-				"|  |  |  |  |  |  |  |  |",
-				"|--+--+--+--+--+--+--+--|",
-				"|  |  |  |  |  |  |  |  |",
-				"|--+--+--+--+--+--+--+--|",
-				"|  |  |  |  |  |  |  |  |",
-				"|--+--+--+--+--+--+--+--|",
-				"|  |  |  |  |  |  |  |  |",
-				"|--+--+--+--+--+--+--+--|",
-				"|pw|pw|pw|pw|pw|pw|pw|pw|",
-				"|--+--+--+--+--+--+--+--|",
-				"|rk|kn|bs|qn|kg|bs|kn|rk|",
-				"+---------white---------+"};
+				" +---------black---------+",
+				"8|RK|KN|BS|QN|KG|BS|KN|RK|",
+				" |--+--+--+--+--+--+--+--|",
+				"7|PW|PW|PW|PW|PW|PW|PW|PW|",
+				" |--+--+--+--+--+--+--+--|",
+				"6|  |  |  |  |  |  |  |  |",
+				" |--+--+--+--+--+--+--+--|",
+				"5|  |  |  |  |  |  |  |  |",
+				" |--+--+--+--+--+--+--+--|",
+				"4|  |  |  |  |  |  |  |  |",
+				" |--+--+--+--+--+--+--+--|",
+				"3|  |  |  |  |  |  |  |  |",
+				" |--+--+--+--+--+--+--+--|",
+				"2|pw|pw|pw|pw|pw|pw|pw|pw|",
+				" |--+--+--+--+--+--+--+--|",
+				"1|rk|kn|bs|qn|kg|bs|kn|rk|",
+				" +---------white---------+",
+				"  a  b  c  d  e  f  g  h"};
 		
 		StringBuilder expectedBoard = new StringBuilder();
 		for(String line : boardPattern) 
 			expectedBoard.append(line+"\n");
 		
-		String visibleBoard = COUT.getLastLines(8*2+2);
+		String visibleBoard = COUT.getLastLines(8*2+3);
 		
 		assertThat(visibleBoard, containsString(expectedBoard.toString()));
 	}
 	
 	private void andTDCHessAsksForHumanMove() {
-		assertEquals("Human move (in form d2-d3):", COUT.getLastLine());
+		assertEquals("Human move (in form d2-d3):", COUT.getLastLine().trim());
 	}
 
 }

@@ -29,7 +29,7 @@ public class COUT {
 				sb.append(it.next() + "\n");
 			}
 			
-			return sb.toString().trim();   //substring(0, sb.length()-1);
+			return sb.toString();
 		}
 	}
 	
