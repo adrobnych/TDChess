@@ -6,6 +6,8 @@ import org.junit.Test;
 
 import com.tdl.console.COUT;
 import com.tdl.core.Game;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 
 public class TDChessShouldPlayForBlack {
 
@@ -46,9 +48,9 @@ public class TDChessShouldPlayForBlack {
 		for(String line : boardPattern) 
 			expectedBoard.append(line+"\n");
 		
-		String visibleBoard = COUT.getLastLines(8*2+1);
+		String visibleBoard = COUT.getLastLines(8*2+2);
 		
-		assertEquals(expectedBoard.toString().trim(), visibleBoard);
+		assertThat(visibleBoard, containsString(expectedBoard.toString()));
 	}
 	
 	private void andTDCHessAsksForHumanMove() {

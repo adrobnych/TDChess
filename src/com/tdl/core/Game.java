@@ -26,5 +26,7 @@ public class Game {
 	public void start(){
 		for(String line : boardPattern)
 			COUT.println(line);
+		
+		COUT.println("Human move (in form d2-d3):");
 	}
 }
