@@ -44,11 +44,11 @@ public class TDChessShouldPlayForBlack {
 		
 		StringBuilder expectedBoard = new StringBuilder();
 		for(String line : boardPattern) 
-			expectedBoard.append(line);
+			expectedBoard.append(line+"\n");
 		
 		String visibleBoard = COUT.getLastLines(8*2+1);
 		
-		assertEquals(expectedBoard, visibleBoard);
+		assertEquals(expectedBoard.toString().trim(), visibleBoard);
 	}
 
 }
