@@ -4,16 +4,37 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import org.jmock.Expectations;
+import org.jmock.Mockery;
+import org.jmock.integration.junit4.JMock;
+import org.junit.runner.RunWith;
+import org.jmock.integration.junit4.*;
+
+import com.tdl.console.CIN;
+import com.tdl.core.BoardUpdater;
+import com.tdl.core.Game;
+
+@RunWith(JMock.class)
 public class GameSpec {
 	
-	@Test
-	public void itShouldWaitForHumanMovementAndThenUpdateBoard() {
-		//first TDD smell we can see is that we designed CIN with global visibility.
-		//this makes task of unit testing hard and we see the first point
-		//for immediate refactoring.
+	//interfaces - dependencies
+	CIN cin = new CIN();
+	Game game = new Game(cin);
+
+	Mockery context = new JUnit4Mockery();
+	BoardUpdater boardUpdater =
+		context.mock(BoardUpdater.class);
+	
+	public void afterStartItShouldWaitForHumanMovementAndThenUpdateBoard() {
+
+		game.start();
 		
-		//Another smell which we see immediately is that Game has at least 2
-		//responsibilities: process human movement *AND* update board.
+		context.checking(new Expectations() {{
+			oneOf(boardUpdater).updateAfterUserMovement("d2-d3");
+		}});
+		    
+		cin.mimicUserInput("d2-d3");
+		
 	}
 
 }

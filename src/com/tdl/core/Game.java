@@ -5,6 +5,12 @@ import com.tdl.console.COUT;
 
 public class Game {
 	
+	private final CIN consoleInput; 
+	
+	public Game(CIN cin){
+		this.consoleInput = cin;
+	}
+	
 	private final String[] boardPattern = {		
 			" +---------black---------+",
 			"8|RK|KN|BS|QN|KG|BS|KN|RK|",
