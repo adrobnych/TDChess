@@ -1,5 +1,6 @@
 package com.tdl.core;
 
+import com.tdl.console.CIN;
 import com.tdl.console.COUT;
 
 public class Game {
@@ -28,6 +29,6 @@ public class Game {
 		for(String line : boardPattern)
 			COUT.println(line);
 		
-		COUT.println("Human move (in form d2-d3):");
+		COUT.println("Human move (in form d2-d3):");  
 	}
 }
