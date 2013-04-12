@@ -1,9 +1,12 @@
 package com.tdl.tests.features;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import com.tdl.console.CIN;
 import com.tdl.console.COUT;
 import com.tdl.core.Game;
 
@@ -26,7 +29,8 @@ public class HumanCanDoMovementForWhite {
 		GivenGameWasStarted();
 		AndUserSeeInvitationLine();
 		WhenUserEnterMovementOfPawn();
-		//ThenHeShouldSeeCorrectMovementOfSomeBlackFigure();
+		ThenHeSHouldSeeUpdatedBoard();
+		//AndShouldSeeMessageThatTDCHessIsThinking();
 	}
 
 	Game game = new Game();
@@ -41,6 +45,38 @@ public class HumanCanDoMovementForWhite {
 	
 	private void WhenUserEnterMovementOfPawn() {
 		CIN.mimicUserInput("d2-d3");
+	}
+	
+	private void ThenHeSHouldSeeUpdatedBoard() {
+			String[] boardPattern = {		
+					" +---------black---------+",
+					"8|RK|KN|BS|QN|KG|BS|KN|RK|",
+					" |--+--+--+--+--+--+--+--|",
+					"7|PW|PW|PW|PW|PW|PW|PW|PW|",
+					" |--+--+--+--+--+--+--+--|",
+					"6|  |  |  |  |  |  |  |  |",
+					" |--+--+--+--+--+--+--+--|",
+					"5|  |  |  |  |  |  |  |  |",
+					" |--+--+--+--+--+--+--+--|",
+					"4|  |  |  |  |  |  |  |  |",
+					" |--+--+--+--+--+--+--+--|",
+					"3|  |  |  |pw|  |  |  |  |",
+					" |--+--+--+--+--+--+--+--|",
+					"2|pw|pw|pw|  |pw|pw|pw|pw|",
+					" |--+--+--+--+--+--+--+--|",
+					"1|rk|kn|bs|qn|kg|bs|kn|rk|",
+					" +---------white---------+",
+					"  a  b  c  d  e  f  g  h"};
+			
+			StringBuilder expectedBoard = new StringBuilder();
+			for(String line : boardPattern) 
+				expectedBoard.append(line+"\n");
+			
+			String visibleBoard = COUT.getLastLines(8*2+3);
+			
+			assertThat(visibleBoard, containsString(expectedBoard.toString()));
+		
+		
 	}
     
 }
