@@ -25,7 +25,7 @@ public class GameSpec {
 	
 	//cin is unstable dependency to console ui. Lets depend on abstraction 
 	UIManager ui = new UIConsoleManager();
-	Game game = new Game(ui);
+	Game game = new Game(ui, FiguresHolder.standardOrderFactory());
 
 	//naturally Mockery works with interfaces, so need additional efforts to work with 
 	//concrete files. Actually I don't see problem with one concrete instance of boardUpdater. We wont have several ones.

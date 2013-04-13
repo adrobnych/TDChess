@@ -6,9 +6,11 @@ import com.tdl.ui.UIManager;
 public class Game {
 	
 	private final UIManager uiManager; 
+	private FiguresHolder figures;
 	
-	public Game(UIManager ui){
+	public Game(UIManager ui, FiguresHolder figures){
 		this.uiManager = ui;
+		this.figures = figures;
 	}
 	
 	private final String[] boardPattern = {		
@@ -39,6 +41,6 @@ public class Game {
 	}
 	
 	public FiguresHolder getFigures(){
-		return null;
+		return figures;
 	}
 }
