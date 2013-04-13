@@ -8,7 +8,7 @@ import org.jmock.Expectations;
 import org.jmock.Mockery;
 import org.jmock.integration.junit4.JMock;
 import org.junit.runner.RunWith;
-import org.jmock.integration.junit4.*;
+import org.jmock.lib.legacy.ClassImposteriser;
 
 import com.tdl.console.CIN;
 import com.tdl.core.BoardUpdater;
@@ -18,13 +18,20 @@ import com.tdl.core.Game;
 public class GameSpec {
 	
 	//interfaces - dependencies
+	
+	//We have rework CIN from global static scope to object
 	CIN cin = new CIN();
 	Game game = new Game(cin);
 
-	Mockery context = new JUnit4Mockery();
+	//naturally Mockery works with interfaces, so need additional efforts to work with 
+	//concrete files. Actually I don't see problem with one concrete instance of boardUpdater. We wont have several ones.
+	Mockery context = new Mockery() {{
+        setImposteriser(ClassImposteriser.INSTANCE);
+    }};
 	BoardUpdater boardUpdater =
 		context.mock(BoardUpdater.class);
 	
+	@Test
 	public void afterStartItShouldWaitForHumanMovementAndThenUpdateBoard() {
 
 		game.start();
