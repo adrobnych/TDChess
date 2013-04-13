@@ -40,37 +40,41 @@ public class GameSpec {
 		context.mock(ChessFigure.class);
 	
 	@Test
-	public void afterStartItShouldWaitForHumanMovementAndThenUpdateBoard() {
+	public void afterStartItShouldWaitForHumanMovementAndThenUpdateBoard_protocols() {
 		//setup
 		game.start();
 		
 		//protocols
 		context.checking(new Expectations() {{
-			oneOf(figures).findFigureAtFirstPosition("d2");   
+			oneOf(figures).findFigureAtPosition("d2");   
 		}});
 		
 		context.checking(new Expectations() {{
-			oneOf(figure).moveToNewPosition("d3");   
+			oneOf(figures).moveToNewPosition("d2-d3");   
 		}});
 		
 		context.checking(new Expectations() {{
-			//lets spec this more simple
 			oneOf(boardUpdater).update();
 		}});
+		    
+		//actionUnderTest
+		game.userEnteredLine("d2-d3");
+
+	}
+	
+	@Test
+	public void afterStartItShouldWaitForHumanMovementAndThenUpdateBoard_final_state() {
+		//setup
+		game.start();
 		    
 		//actionUnderTest
 		ui.mimicUserInput("d2-d3");
 				
 		//final state of world
-		assertEquals(null, game.getFigures().findFigureAtFirstPosition("d2")); //not for further refactoring - use exception or NullObject instead
-		assertEquals(ChessFigure.class, game.getFigures().findFigureAtFirstPosition("d3").getClass());
-		assertEquals(FigureType.PAWN, game.getFigures().findFigureAtFirstPosition("d3").getFigureSymbol());
-		assertEquals(FigureColor.WHITE, game.getFigures().findFigureAtFirstPosition("d3").getFigureColor());
-
-		//note how quickly we can change spec of code - much faster then code itself.
-	    //This is one of parts of TD "miricle". 
-	
-	    //and there is no scare to fail. because we have tests as a safety belt
+		assertEquals(null, game.getFigures().findFigureAtPosition("d2")); //not for further refactoring - use exception or NullObject instead
+		assertEquals(ChessFigure.class, game.getFigures().findFigureAtPosition("d3").getClass());
+		assertEquals(FigureType.PAWN, game.getFigures().findFigureAtPosition("d3").getFigureSymbol());
+		assertEquals(FigureColor.WHITE, game.getFigures().findFigureAtPosition("d3").getFigureColor());
 	}
 
 }

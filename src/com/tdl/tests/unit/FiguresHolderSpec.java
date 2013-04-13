@@ -15,7 +15,7 @@ public class FiguresHolderSpec {
 	@Test
 	public void itCanGenerateDefauldOrderOfFigures_checkForBlackRook() {
 		FiguresHolder figures = FiguresHolder.standardOrderFactory();
-		ChessFigure foundFigure = figures.findFigureAtFirstPosition("a8");
+		ChessFigure foundFigure = figures.findFigureAtPosition("a8");
 		assertEquals(FigureType.ROOK, foundFigure.getFigureSymbol());
 		assertEquals(FigureColor.BLACK, foundFigure.getFigureColor());
 	}
@@ -23,7 +23,7 @@ public class FiguresHolderSpec {
 	@Test
 	public void itCanGenerateDefauldOrderOfFigures_checkForWhitePawnAtH2() {
 		FiguresHolder figures = FiguresHolder.standardOrderFactory();
-		ChessFigure foundFigure = figures.findFigureAtFirstPosition("h2");
+		ChessFigure foundFigure = figures.findFigureAtPosition("h2");
 		assertEquals(FigureType.PAWN, foundFigure.getFigureSymbol());
 		assertEquals(FigureColor.WHITE, foundFigure.getFigureColor());
 	}
@@ -31,7 +31,7 @@ public class FiguresHolderSpec {
 	@Test
 	public void itCanGenerateDefauldOrderOfFigures_checkForBlackPawnAtG7() {
 		FiguresHolder figures = FiguresHolder.standardOrderFactory();
-		ChessFigure foundFigure = figures.findFigureAtFirstPosition("g7");
+		ChessFigure foundFigure = figures.findFigureAtPosition("g7");
 		assertEquals(FigureType.PAWN, foundFigure.getFigureSymbol());
 		assertEquals(FigureColor.BLACK, foundFigure.getFigureColor());
 	}
@@ -39,7 +39,7 @@ public class FiguresHolderSpec {
 	@Test
 	public void itCanGenerateDefauldOrderOfFigures_checkForWhiteKingAtE1() {
 		FiguresHolder figures = FiguresHolder.standardOrderFactory();
-		ChessFigure foundFigure = figures.findFigureAtFirstPosition("e1");
+		ChessFigure foundFigure = figures.findFigureAtPosition("e1");
 		assertEquals(FigureType.KING, foundFigure.getFigureSymbol());
 		assertEquals(FigureColor.WHITE, foundFigure.getFigureColor());
 	}

@@ -9,7 +9,7 @@ public class FiguresHolder {
 	
 	private Map<String, ChessFigure> figures = new HashMap<>();
 	
-	public ChessFigure findFigureAtFirstPosition(String boardCell){
+	public ChessFigure findFigureAtPosition(String boardCell){
 		return figures.get(boardCell);
 	}
 	
