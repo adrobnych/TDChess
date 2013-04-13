@@ -13,6 +13,8 @@ import org.jmock.lib.legacy.ClassImposteriser;
 import com.tdl.console.CIN;
 import com.tdl.core.BoardUpdater;
 import com.tdl.core.Game;
+import com.tdl.ui.UIConsoleManager;
+import com.tdl.ui.UIManager;
 
 @RunWith(JMock.class)
 public class GameSpec {
@@ -30,6 +32,10 @@ public class GameSpec {
     }};
 	BoardUpdater boardUpdater =
 		context.mock(BoardUpdater.class);
+	FiguresHolder figures =
+		context.mock(FiguresHolder.class);
+	ChessFigure figure = 
+		context.mock(ChessFigure.class);
 	
 	@Test
 	public void afterStartItShouldWaitForHumanMovementAndThenUpdateBoard() {
@@ -54,10 +60,10 @@ public class GameSpec {
 		ui.mimicUserInput("d2-d3");
 				
 		//final state of world
-		assertEquals(null, figures.findFigureAtFirstPosition("d2")); //not for further refactoring - use exception or NullObject instead
-		assertEquals(ChessFigure, figures.findFigureAtFirstPosition("d3").class);
-		assertEqual(PAWN, figures.findFigureAtFirstPosition("d3").getFigureSymbol);
-		assertEqual(WHITE, figures.findFigureAtFirstPosition("d3").getFigureColor);
+		assertEquals(null, game.getFigures().findFigureAtFirstPosition("d2")); //not for further refactoring - use exception or NullObject instead
+		assertEquals(ChessFigure, game.getFigures().findFigureAtFirstPosition("d3").class);
+		assertEqual(FigureType.PAWN, game.getFigures().findFigureAtFirstPosition("d3").getFigureSymbol);
+		assertEqual(FigureColor.WHITE, game.getFigures().findFigureAtFirstPosition("d3").getFigureColor);
 
 		//note how quickly we can change spec of code - much faster then code itself.
 	    //This is one of parts of TD "miricle". 

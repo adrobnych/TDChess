@@ -2,13 +2,14 @@ package com.tdl.core;
 
 import com.tdl.console.CIN;
 import com.tdl.console.COUT;
+import com.tdl.ui.UIManager;
 
 public class Game {
 	
-	private final CIN consoleInput; 
+	private final UIManager uiManager; 
 	
-	public Game(CIN cin){
-		this.consoleInput = cin;
+	public Game(UIManager ui){
+		this.uiManager = ui;
 	}
 	
 	private final String[] boardPattern = {		
