@@ -43,4 +43,8 @@ public class Game {
 	public FiguresHolder getFigures(){
 		return figures;
 	}
+	
+	public void userEnteredLine(String lineFromUser){
+		
+	}
 }
