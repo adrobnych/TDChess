@@ -10,6 +10,7 @@ public class Game {
 	
 	public Game(UIManager ui, FiguresHolder figures){
 		this.uiManager = ui;
+		uiManager.setGame(this);
 		this.figures = figures;
 	}
 	

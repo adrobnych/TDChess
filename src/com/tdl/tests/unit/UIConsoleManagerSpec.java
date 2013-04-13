@@ -22,10 +22,13 @@ public class UIConsoleManagerSpec {
 	@Test
 	public void itShouldMockUserInput() {
 		UIManager ui = new UIConsoleManager();
-		ui.mimicUserInput("d2-d3");
+		ui.setGame(game);
+		
 		context.checking(new Expectations() {{
 			oneOf(game).userEnteredLine("d2-d3");
 		}});
+		
+		ui.mimicUserInput("d2-d3");
 	}
 
 }
