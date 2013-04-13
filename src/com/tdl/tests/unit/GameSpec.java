@@ -1,17 +1,19 @@
 package com.tdl.tests.unit;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 import org.jmock.Expectations;
 import org.jmock.Mockery;
 import org.jmock.integration.junit4.JMock;
-import org.junit.runner.RunWith;
 import org.jmock.lib.legacy.ClassImposteriser;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
-import com.tdl.console.CIN;
 import com.tdl.core.BoardUpdater;
+import com.tdl.core.ChessFigure;
+import com.tdl.core.FigureColor;
+import com.tdl.core.FigureType;
+import com.tdl.core.FiguresHolder;
 import com.tdl.core.Game;
 import com.tdl.ui.UIConsoleManager;
 import com.tdl.ui.UIManager;
@@ -61,9 +63,9 @@ public class GameSpec {
 				
 		//final state of world
 		assertEquals(null, game.getFigures().findFigureAtFirstPosition("d2")); //not for further refactoring - use exception or NullObject instead
-		assertEquals(ChessFigure, game.getFigures().findFigureAtFirstPosition("d3").class);
-		assertEqual(FigureType.PAWN, game.getFigures().findFigureAtFirstPosition("d3").getFigureSymbol);
-		assertEqual(FigureColor.WHITE, game.getFigures().findFigureAtFirstPosition("d3").getFigureColor);
+		assertEquals(ChessFigure.class, game.getFigures().findFigureAtFirstPosition("d3").getClass());
+		assertEquals(FigureType.PAWN, game.getFigures().findFigureAtFirstPosition("d3").getFigureSymbol());
+		assertEquals(FigureColor.WHITE, game.getFigures().findFigureAtFirstPosition("d3").getFigureColor());
 
 		//note how quickly we can change spec of code - much faster then code itself.
 	    //This is one of parts of TD "miricle". 

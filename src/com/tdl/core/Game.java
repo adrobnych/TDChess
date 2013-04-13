@@ -1,6 +1,5 @@
 package com.tdl.core;
 
-import com.tdl.console.CIN;
 import com.tdl.console.COUT;
 import com.tdl.ui.UIManager;
 
@@ -37,5 +36,9 @@ public class Game {
 			COUT.println(line);
 		
 		COUT.println("Human move (in form d2-d3):");  
+	}
+	
+	public FiguresHolder getFigures(){
+		return null;
 	}
 }
