@@ -5,9 +5,12 @@ import static org.junit.Assert.assertEquals;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.tdl.ui.MovementResolver;
+
 public class FiguresHolder {
 	
 	private Map<String, ChessFigure> figures = new HashMap<>();
+	private MovementResolver movementResolver;
 	
 	public ChessFigure findFigureAtPosition(String boardCell){
 		return figures.get(boardCell);
@@ -40,5 +43,20 @@ public class FiguresHolder {
 		holder.figures.put("h1", new ChessFigure(FigureType.ROOK, FigureColor.WHITE));
 		
 		return holder;
+	}
+	
+	public void moveToNewPosition(String movement){
+		Movement m = movementResolver.parse(movement);
+		if(m != null){
+			ChessFigure figure = findFigureAtPosition(m.getFirstPosition());
+			if(figure != null){
+				figures.remove(m.getFirstPosition());
+				figures.put(m.getSecondPosition(), figure);
+			}
+		}
+	}
+
+	public void setMovementResolver(MovementResolver moveResolver) {
+		this.movementResolver = moveResolver;
 	}
 }
