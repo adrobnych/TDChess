@@ -8,10 +8,20 @@ import org.junit.Test;
 
 import com.tdl.console.CIN;
 import com.tdl.console.COUT;
+import com.tdl.core.BoardUpdater;
+import com.tdl.core.FiguresHolder;
 import com.tdl.core.Game;
+import com.tdl.ui.ConsoleMovementResolver;
+import com.tdl.ui.UIConsoleManager;
+import com.tdl.ui.UIManager;
 
 public class HumanCanDoMovementForWhite {
 
+	UIManager ui = new UIConsoleManager(new BoardUpdater());
+	Game game = new Game(ui, 
+					FiguresHolder.standardOrderFactory(), 
+					new ConsoleMovementResolver());
+	
 	@Test
 	public void importantNoteBeforeSecondFuncTest() {
 		System.out.println(
@@ -33,7 +43,6 @@ public class HumanCanDoMovementForWhite {
 		//AndShouldSeeMessageThatTDCHessIsThinking();
 	}
 
-	Game game = new Game();
 	
 	private void GivenGameWasStarted() {
 		game.start();
@@ -44,7 +53,7 @@ public class HumanCanDoMovementForWhite {
 	}
 	
 	private void WhenUserEnterMovementOfPawn() {
-		CIN.mimicUserInput("d2-d3");
+		ui.mimicUserInput("d2-d3");
 	}
 	
 	private void ThenHeSHouldSeeUpdatedBoard() {

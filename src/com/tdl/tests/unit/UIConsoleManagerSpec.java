@@ -7,6 +7,7 @@ import org.jmock.lib.legacy.ClassImposteriser;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.tdl.core.BoardUpdater;
 import com.tdl.core.Game;
 import com.tdl.ui.UIConsoleManager;
 import com.tdl.ui.UIManager;
@@ -21,7 +22,7 @@ public class UIConsoleManagerSpec {
 
 	@Test
 	public void itShouldMockUserInput() {
-		UIManager ui = new UIConsoleManager();
+		UIManager ui = new UIConsoleManager(new BoardUpdater());
 		ui.setGame(game);
 		
 		context.checking(new Expectations() {{

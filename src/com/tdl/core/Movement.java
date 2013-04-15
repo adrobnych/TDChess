@@ -4,6 +4,10 @@ public class Movement {
 	private String firstPosition;
 	private String secondPosition;
 	
+	public Movement(String firstPosition, String secondPosition) {
+		this.firstPosition = firstPosition;
+		this.secondPosition = secondPosition;
+	}
 	public String getFirstPosition() {
 		return firstPosition;
 	}

@@ -1,24 +1,32 @@
 package com.tdl.tests.features;
 
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
 import com.tdl.console.COUT;
+import com.tdl.core.BoardUpdater;
+import com.tdl.core.FiguresHolder;
 import com.tdl.core.Game;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import com.tdl.ui.ConsoleMovementResolver;
+import com.tdl.ui.UIConsoleManager;
+import com.tdl.ui.UIManager;
 
 public class TDChessShouldPlayForBlack {
 
+	UIManager ui = new UIConsoleManager(new BoardUpdater());
+	Game game = new Game(ui, 
+					FiguresHolder.standardOrderFactory(), 
+					new ConsoleMovementResolver());
+	
 	@Test
 	public void test() {
 		givenWeStartedNewGame();
 		thenWeShallSeeBoard();
 		andTDCHessAsksForHumanMove();
 	}
-
-	Game game = new Game();
 	
 	private void givenWeStartedNewGame() {
 		game.start();

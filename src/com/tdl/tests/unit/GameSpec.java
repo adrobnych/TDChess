@@ -15,6 +15,9 @@ import com.tdl.core.FigureColor;
 import com.tdl.core.FigureType;
 import com.tdl.core.FiguresHolder;
 import com.tdl.core.Game;
+import com.tdl.core.Movement;
+import com.tdl.ui.ConsoleMovementResolver;
+import com.tdl.ui.MovementResolver;
 import com.tdl.ui.UIConsoleManager;
 import com.tdl.ui.UIManager;
 
@@ -22,13 +25,9 @@ import com.tdl.ui.UIManager;
 public class GameSpec {
 	
 	//interfaces - dependencies
+	UIManager ui;
+	Game game;
 	
-	//cin is unstable dependency to console ui. Lets depend on abstraction 
-	UIManager ui = new UIConsoleManager();
-	Game game = new Game(ui, FiguresHolder.standardOrderFactory());
-
-	//naturally Mockery works with interfaces, so need additional efforts to work with 
-	//concrete files. Actually I don't see problem with one concrete instance of boardUpdater. We wont have several ones.
 	Mockery context = new Mockery() {{
         setImposteriser(ClassImposteriser.INSTANCE);
     }};
@@ -41,12 +40,13 @@ public class GameSpec {
 	
 	@Test
 	public void afterStartItShouldWaitForHumanMovementAndThenUpdateBoard_protocols() {
+		
 		//setup
-		game.start();
+		ui = new UIConsoleManager(boardUpdater);
 		
 		//protocols
 		context.checking(new Expectations() {{
-			oneOf(figures).findFigureAtPosition("d2");   
+			oneOf(figures).setMovementResolver(null);   
 		}});
 		
 		context.checking(new Expectations() {{
@@ -58,6 +58,8 @@ public class GameSpec {
 		}});
 		    
 		//actionUnderTest
+		game = new Game(ui, figures, null);
+		game.start();
 		game.userEnteredLine("d2-d3");
 
 	}
@@ -65,6 +67,10 @@ public class GameSpec {
 	@Test
 	public void afterStartItShouldWaitForHumanMovementAndThenUpdateBoard_final_state() {
 		//setup
+		ui = new UIConsoleManager(new BoardUpdater());
+		game = new Game(ui, 
+						FiguresHolder.standardOrderFactory(), 
+						new ConsoleMovementResolver());
 		game.start();
 		    
 		//actionUnderTest

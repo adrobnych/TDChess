@@ -9,9 +9,7 @@ public class ConsoleMovementResolver implements MovementResolver {
 		String[] parts = movement.split("-");
 		String part1 = parts[0];
 		String part2 = parts[1];
-		Movement m = new Movement();
-		m.setFirstPosition(part1);
-		m.setSecondPosition(part2);
+		Movement m = new Movement(part1, part2);
 		return m;
 	}
 
