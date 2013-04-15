@@ -24,7 +24,7 @@ public class FiguresHolderSpec {
 	public void itCanGenerateDefauldOrderOfFigures_checkForBlackRook() {
 		FiguresHolder figures = FiguresHolder.standardOrderFactory();
 		ChessFigure foundFigure = figures.findFigureAtPosition("a8");
-		assertEquals(FigureType.ROOK, foundFigure.getFigureSymbol());
+		assertEquals(FigureType.ROOK, foundFigure.getFigureType());
 		assertEquals(FigureColor.BLACK, foundFigure.getFigureColor());
 	}
 	
@@ -32,7 +32,7 @@ public class FiguresHolderSpec {
 	public void itCanGenerateDefauldOrderOfFigures_checkForWhitePawnAtH2() {
 		FiguresHolder figures = FiguresHolder.standardOrderFactory();
 		ChessFigure foundFigure = figures.findFigureAtPosition("h2");
-		assertEquals(FigureType.PAWN, foundFigure.getFigureSymbol());
+		assertEquals(FigureType.PAWN, foundFigure.getFigureType());
 		assertEquals(FigureColor.WHITE, foundFigure.getFigureColor());
 	}
 	
@@ -40,7 +40,7 @@ public class FiguresHolderSpec {
 	public void itCanGenerateDefauldOrderOfFigures_checkForBlackPawnAtG7() {
 		FiguresHolder figures = FiguresHolder.standardOrderFactory();
 		ChessFigure foundFigure = figures.findFigureAtPosition("g7");
-		assertEquals(FigureType.PAWN, foundFigure.getFigureSymbol());
+		assertEquals(FigureType.PAWN, foundFigure.getFigureType());
 		assertEquals(FigureColor.BLACK, foundFigure.getFigureColor());
 	}
 	
@@ -48,7 +48,7 @@ public class FiguresHolderSpec {
 	public void itCanGenerateDefauldOrderOfFigures_checkForWhiteKingAtE1() {
 		FiguresHolder figures = FiguresHolder.standardOrderFactory();
 		ChessFigure foundFigure = figures.findFigureAtPosition("e1");
-		assertEquals(FigureType.KING, foundFigure.getFigureSymbol());
+		assertEquals(FigureType.KING, foundFigure.getFigureType());
 		assertEquals(FigureColor.WHITE, foundFigure.getFigureColor());
 	}
 	
@@ -79,7 +79,7 @@ public class FiguresHolderSpec {
 		figures.moveToNewPosition("a2-a3");
 		assertEquals(null, figures.findFigureAtPosition("a2"));
 		ChessFigure foundFigure = figures.findFigureAtPosition("a3");
-		assertEquals(FigureType.PAWN, foundFigure.getFigureSymbol());
+		assertEquals(FigureType.PAWN, foundFigure.getFigureType());
 	}
 	
 }

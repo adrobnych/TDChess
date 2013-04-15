@@ -67,7 +67,9 @@ public class GameSpec {
 	@Test
 	public void afterStartItShouldWaitForHumanMovementAndThenUpdateBoard_final_state() {
 		//setup
-		ui = new UIConsoleManager(new BoardUpdater());
+		BoardUpdater bu = new BoardUpdater();
+		ui = new UIConsoleManager(bu);
+		bu.setUi(ui);
 		game = new Game(ui, 
 						FiguresHolder.standardOrderFactory(), 
 						new ConsoleMovementResolver());
@@ -79,7 +81,7 @@ public class GameSpec {
 		//final state of world
 		assertEquals(null, game.getFigures().findFigureAtPosition("d2")); //not for further refactoring - use exception or NullObject instead
 		assertEquals(ChessFigure.class, game.getFigures().findFigureAtPosition("d3").getClass());
-		assertEquals(FigureType.PAWN, game.getFigures().findFigureAtPosition("d3").getFigureSymbol());
+		assertEquals(FigureType.PAWN, game.getFigures().findFigureAtPosition("d3").getFigureType());
 		assertEquals(FigureColor.WHITE, game.getFigures().findFigureAtPosition("d3").getFigureColor());
 	}
 

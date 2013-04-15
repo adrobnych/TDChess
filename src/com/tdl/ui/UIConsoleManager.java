@@ -28,4 +28,9 @@ public class UIConsoleManager implements UIManager {
 		boardUpdater.update();
 	}
 
+	@Override
+	public Game getGame() {
+		return currentGame;
+	}
+
 }

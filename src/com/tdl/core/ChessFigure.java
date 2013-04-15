@@ -13,7 +13,34 @@ public class ChessFigure {
 		
 	}
 	
-	public FigureType getFigureSymbol(){
+	public String getFigureSymbol(){
+		String lowCaseSymbol = null; 
+		switch(type){
+		case ROOK:
+			lowCaseSymbol = "rk";
+			break;
+		case KNIGHT:
+			lowCaseSymbol = "kn";
+			break;
+		case BISHOP:
+			lowCaseSymbol = "bs";
+			break;
+		case QUEEN:
+			lowCaseSymbol = "qn";
+			break;
+		case KING:
+			lowCaseSymbol = "kg";
+			break;
+		case PAWN:
+			lowCaseSymbol = "pw";
+		}
+		if(color == FigureColor.BLACK)
+			return lowCaseSymbol.toUpperCase();
+		else 
+			return lowCaseSymbol;
+	}
+	
+	public FigureType getFigureType(){
 		return type;
 	}
 	
