@@ -7,4 +7,5 @@ public interface UIManager {
 	public void mimicUserInput(String movement);
 	public void update();
 	public Game getGame();
+	public void getRealInput();
 }

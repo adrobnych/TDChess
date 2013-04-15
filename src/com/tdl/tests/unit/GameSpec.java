@@ -73,6 +73,7 @@ public class GameSpec {
 		game = new Game(ui, 
 						FiguresHolder.standardOrderFactory(), 
 						new ConsoleMovementResolver());
+		ui.setGame(game);
 		game.start();
 		    
 		//actionUnderTest
@@ -83,6 +84,30 @@ public class GameSpec {
 		assertEquals(ChessFigure.class, game.getFigures().findFigureAtPosition("d3").getClass());
 		assertEquals(FigureType.PAWN, game.getFigures().findFigureAtPosition("d3").getFigureType());
 		assertEquals(FigureColor.WHITE, game.getFigures().findFigureAtPosition("d3").getFigureColor());
+	}
+	
+	@Test
+	public void itSouldAllowRealInputFromConsole() {
+		
+		ui = context.mock(UIConsoleManager.class);
+		game = new Game(ui, 
+						FiguresHolder.standardOrderFactory(), 
+						new ConsoleMovementResolver());
+		
+		//protocols
+		context.checking(new Expectations() {{
+			oneOf(ui).update();   
+		}});
+		
+		context.checking(new Expectations() {{
+			oneOf(ui).getRealInput();   
+		}});
+		    
+		//actionUnderTest
+		
+		game.enableRealInput();
+		game.start();
+
 	}
 
 }

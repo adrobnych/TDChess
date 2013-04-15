@@ -26,6 +26,7 @@ public class TDChessShouldPlayForBlack {
 	public void test() {
 		//setup
 		bu.setUi(ui);
+		ui.setGame(game);
 		
 		//scenario
 		givenWeStartedNewGame();

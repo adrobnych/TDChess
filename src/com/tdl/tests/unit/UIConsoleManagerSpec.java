@@ -8,7 +8,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.tdl.console.BoardUpdater;
+import com.tdl.core.FiguresHolder;
 import com.tdl.core.Game;
+import com.tdl.ui.ConsoleMovementResolver;
 import com.tdl.ui.UIConsoleManager;
 import com.tdl.ui.UIManager;
 

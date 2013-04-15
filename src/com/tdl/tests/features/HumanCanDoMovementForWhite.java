@@ -38,6 +38,7 @@ public class HumanCanDoMovementForWhite {
 	public void test(){
 		//setup
 		bu.setUi(ui);
+		ui.setGame(game);
 		
 		//scenario
 		GivenGameWasStarted();

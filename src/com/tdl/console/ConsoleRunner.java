@@ -9,10 +9,15 @@ import com.tdl.ui.UIManager;
 public class ConsoleRunner {
 	
 	public static void main(String[] args) {
-		UIManager ui = new UIConsoleManager(new BoardUpdater());
+		BoardUpdater bu = new BoardUpdater();
+		UIManager ui = new UIConsoleManager(bu);
+		bu.setUi(ui);
 		Game game = new Game(ui, 
 						FiguresHolder.standardOrderFactory(), 
 						new ConsoleMovementResolver());
+		ui.setGame(game);
+
+		game.enableRealInput();
 		game.start();
 	}
 

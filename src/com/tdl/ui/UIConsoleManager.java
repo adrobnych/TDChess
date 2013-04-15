@@ -1,5 +1,7 @@
 package com.tdl.ui;
 
+import java.util.Scanner;
+
 import com.tdl.console.BoardUpdater;
 import com.tdl.core.Game;
 
@@ -31,6 +33,14 @@ public class UIConsoleManager implements UIManager {
 	@Override
 	public Game getGame() {
 		return currentGame;
+	}
+
+	@Override
+	public void getRealInput() {
+		Scanner scan = new Scanner(System.in);
+		String lineFromUser = scan.nextLine();
+		currentGame.userEnteredLine(lineFromUser);
+		scan.close();
 	}
 
 }

@@ -46,6 +46,7 @@ public class BoardUpdaterSpec {
 	public void test() {
 		
 		bu.setUi(ui);
+		ui.setGame(game);
 		game.start();
 		COUT.reset();
 		ui.mimicUserInput("a2-a4");
