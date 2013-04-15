@@ -16,13 +16,18 @@ import com.tdl.ui.UIManager;
 
 public class TDChessShouldPlayForBlack {
 
-	UIManager ui = new UIConsoleManager(new BoardUpdater());
+	BoardUpdater bu = new BoardUpdater();
+	UIManager ui = new UIConsoleManager(bu);
 	Game game = new Game(ui, 
 					FiguresHolder.standardOrderFactory(), 
 					new ConsoleMovementResolver());
 	
 	@Test
 	public void test() {
+		//setup
+		bu.setUi(ui);
+		
+		//scenario
 		givenWeStartedNewGame();
 		thenWeShallSeeBoard();
 		andTDCHessAsksForHumanMove();

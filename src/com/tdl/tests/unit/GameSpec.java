@@ -54,7 +54,7 @@ public class GameSpec {
 		}});
 		
 		context.checking(new Expectations() {{
-			oneOf(boardUpdater).update();
+			exactly(2).of(boardUpdater).update();
 		}});
 		    
 		//actionUnderTest
