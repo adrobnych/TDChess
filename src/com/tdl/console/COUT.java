@@ -46,4 +46,8 @@ public class COUT {
 	public static String getLastLines(int depth){
 		return History.getLastLines(depth);
 	}
+
+	public static void reset() {
+		History.stack.clear();
+	}
 }

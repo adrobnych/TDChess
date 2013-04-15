@@ -1,6 +1,6 @@
 package com.tdl.ui;
 
-import com.tdl.core.BoardUpdater;
+import com.tdl.console.BoardUpdater;
 import com.tdl.core.Game;
 
 public class UIConsoleManager implements UIManager {

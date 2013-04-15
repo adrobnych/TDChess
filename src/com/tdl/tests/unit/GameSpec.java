@@ -9,7 +9,7 @@ import org.jmock.lib.legacy.ClassImposteriser;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.tdl.core.BoardUpdater;
+import com.tdl.console.BoardUpdater;
 import com.tdl.core.ChessFigure;
 import com.tdl.core.FigureColor;
 import com.tdl.core.FigureType;

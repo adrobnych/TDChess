@@ -6,9 +6,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import com.tdl.console.BoardUpdater;
 import com.tdl.console.CIN;
 import com.tdl.console.COUT;
-import com.tdl.core.BoardUpdater;
 import com.tdl.core.FiguresHolder;
 import com.tdl.core.Game;
 import com.tdl.ui.ConsoleMovementResolver;

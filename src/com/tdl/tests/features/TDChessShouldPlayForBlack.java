@@ -6,8 +6,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import com.tdl.console.BoardUpdater;
 import com.tdl.console.COUT;
-import com.tdl.core.BoardUpdater;
 import com.tdl.core.FiguresHolder;
 import com.tdl.core.Game;
 import com.tdl.ui.ConsoleMovementResolver;

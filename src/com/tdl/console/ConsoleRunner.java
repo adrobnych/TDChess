@@ -1,6 +1,5 @@
 package com.tdl.console;
 
-import com.tdl.core.BoardUpdater;
 import com.tdl.core.FiguresHolder;
 import com.tdl.core.Game;
 import com.tdl.ui.ConsoleMovementResolver;
