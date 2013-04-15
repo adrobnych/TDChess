@@ -17,7 +17,8 @@ import com.tdl.ui.UIManager;
 
 public class HumanCanDoMovementForWhite {
 
-	UIManager ui = new UIConsoleManager(new BoardUpdater());
+	BoardUpdater bu = new BoardUpdater();
+	UIManager ui = new UIConsoleManager(bu);
 	Game game = new Game(ui, 
 					FiguresHolder.standardOrderFactory(), 
 					new ConsoleMovementResolver());
@@ -36,6 +37,10 @@ public class HumanCanDoMovementForWhite {
 	
 	@Test
 	public void test(){
+		//setup
+		bu.setUi(ui);
+		
+		//scenario
 		GivenGameWasStarted();
 		AndUserSeeInvitationLine();
 		WhenUserEnterMovementOfPawn();
